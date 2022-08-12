@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import auth from './routes/auth.js';
 import privateRoute from './routes/private.js';
@@ -13,6 +14,7 @@ connectDb();
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
+app.use(cors());
 app.use("/api/auth", (auth));
 app.use("api/private", (privateRoute));
 app.use(ErrorHandler);
